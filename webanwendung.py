@@ -1417,21 +1417,20 @@ def update_output(selected_graph, periods, list_of_contents, list_of_names):
                 fig = px.line(title='Ridge Cross Validation')
                 
                 fig.add_trace(go.Scatter(
-                    x=df.iloc[:-2, 0],
-                    y=df.iloc[:-2, 1],
+                    x=df.iloc[:-1, 0],
+                    y=df.iloc[:-1, 1],
                     mode="lines",
                     line=dict(color= '#4A4AE8'),
                     name="Daten"
                 ))
 
                 fig.add_trace(go.Scatter(
-                    x=[df.iloc[-3, 0],df.iloc[-2, 0], df.iloc[-1, 0]],
-                    y=[df.iloc[-3, 1],df.iloc[-2, 1], df.iloc[-1, 1]],
+                    x=[df.iloc[-2, 0], df.iloc[-1, 0]],
+                    y=[df.iloc[-2, 1], df.iloc[-1, 1]],
                     mode="lines",
                     line=dict(dash="dash", color="red"),
                     name="Vorhersage"
                 ))
-
                 
                 fig.update_layout(
                     xaxis=dict(
