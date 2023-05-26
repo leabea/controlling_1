@@ -1000,10 +1000,11 @@ def update_output(selected_graph, periods, list_of_contents, list_of_names):
 
                 #df2.iloc[:, [column_index]] = pd.to_datetime(df2.iloc[:, [column_index]].astype(str).agg('-'.join, axis=1),
                 #  format='%Y-%m-%d')
-                df2.iloc[:, [column_index]] = pd.to_datetime(df2.iloc[:, [column_index]].astype(str).agg('-'.join, axis=1))
+                #df2.iloc[:, [column_index]] = pd.to_datetime(df2.iloc[:, [column_index]].astype(str).agg('-'.join, axis=1))
                 #df2.iloc[:, [column_index]] = pd.to_datetime(df2.iloc[:, [column_index]].astype(str) + '-01-01', format='%Y-%m-%d')
                 #df2.iloc[:, column_index] = pd.to_datetime(df2.iloc[:, column_index].astype(str) + '-01-01', format='%Y-%m-%d')
                 #df2[column_name] = pd.to_datetime(df2[column_name].astype(str) + '-01-01', format='%Y-%m-%d')
+                df2[column_name] = pd.to_datetime(df2[column_name].astype(str).apply(lambda x: '-'.join(x.split('.0')[0].split('.') + ['01', '01'])))
             
                 df2 = df2.set_index(column_name)
                 #Quelle: Hirschle, J. (2021): Machine Learning für Zeitreihen: Einstieg in Regressions-, ARIMA-und Deep Learning-Verfahren mit Python Inkl. E-Book, 1. Auflage, Carl Hanser Verlag GmbH Co. KG, München, S. 118.
