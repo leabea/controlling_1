@@ -1410,7 +1410,7 @@ def update_output(selected_graph, periods, list_of_contents, list_of_names):
                 prediction2 = ridge.predict([[(last_index + 2)]]).round(2)
 
                 #Hinzufügen der Vorhersagen zum Dataframe 
-                df.iloc[:, 1][df.index[-1]] = prediction1
+                df.iloc[:, 1][df.index[-2]] = prediction1
                 df.iloc[:, 1][df.index[-1]] = prediction2
 
                 #Nun soll der Graph definiert werden:
